@@ -37,6 +37,7 @@ export 'src/thunk_action_events.dart';
 export 'src/common.dart';
 export 'src/redux_state.dart';
 export 'src/set_state_action.dart';
+export 'src/use_navigator.dart';
 
 import 'src/event_emitter.dart';
 

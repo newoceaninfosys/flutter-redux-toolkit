@@ -14,7 +14,7 @@ I tried to bring react-native-functionalities-like as much as i can so that Reac
 ## Getting Started
 - Add following to pubspec:
 ```
-flutter-redux-toolkit:
+flutter_redux_toolkit:
     git:
       url: git://github.com/newoceaninfosys/flutter-redux-toolkit.git
       ref: master

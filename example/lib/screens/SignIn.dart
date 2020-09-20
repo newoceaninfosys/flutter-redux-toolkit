@@ -1,6 +1,5 @@
 import 'package:example/features/signIn/actions.dart';
 import 'package:example/features/signIn/state.dart';
-import 'package:example/hooks/useNavigator.dart';
 import 'package:example/redux/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';

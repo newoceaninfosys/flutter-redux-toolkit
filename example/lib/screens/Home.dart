@@ -1,5 +1,4 @@
 import 'package:example/features/signOut/actions.dart';
-import 'package:example/hooks/useNavigator.dart';
 import 'package:example/redux/app_state.dart';
 import 'package:example/redux/auth/state.dart';
 import 'package:flutter/material.dart';

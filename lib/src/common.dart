@@ -1,0 +1,6 @@
+enum THUNK_STATUS {
+  IDLE,
+  LOADING,
+  SUCCEED,
+  FAILED
+}

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:example/features/signIn/actions.dart';
 import 'package:example/features/signIn/state.dart';
 import 'package:example/redux/app_state.dart';
@@ -11,16 +13,32 @@ class SignInScreen extends HookWidget {
     final navigator = useNavigator(context);
     final isLoading =
         useSelector<AppState, bool>(SignInSelectors.selectIsLoading);
-    final status = useSelector<AppState, String>((AppState state) => state.signIn.submitStatus.toString());
+    final status = useSelector<AppState, String>(
+        (AppState state) => state.signIn.submitStatus.toString());
     final isSucceed =
         useSelector<AppState, bool>(SignInSelectors.selectIsSucceed);
+    // ignore: close_sinks
+    final formController = useForm(
+        defaultValues: {'email': 'sang.dao@newoceaninfosys.com'},
+        watch: ['email']);
 
     final onSubmit = () {
-      dispatch(DoLogin(email: "admin@example.com", password: "123"));
+      formController.submit((formValues, formValid, formErrors) {
+        if (formValid) {
+          log('onSubmit values > ' + formValues.toString());
+        } else {
+          log('onSubmit errors > ' + formErrors.toString());
+        }
+      });
     };
 
     final onSignUp = () {
       navigator.pushNamed('/sign-up');
+    };
+
+    final onReset = () {
+      formController.reset(
+          {'email': 'daominhsangvn@gmail.com'}); // TODO: change input values
     };
 
     useEffect(() {
@@ -28,9 +46,9 @@ class SignInScreen extends HookWidget {
         navigator.pushNamedAndRemoveUntil('/home', (_) => false);
       }
       return () => {
-        // reset state
-        dispatch(Reset())
-      };
+            // reset state
+            dispatch(Reset())
+          };
     }, [isSucceed]);
 
     return Scaffold(
@@ -45,6 +63,49 @@ class SignInScreen extends HookWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // FormFieldController(
+            //     controller: formController,
+            //     name: 'username',
+            //     validators: {
+            //       'required': (value) => value == '' || value == null
+            //           ? 'Please input this field'
+            //           : null,
+            //       'unique': (value) async {
+            //         new Future.delayed(const Duration(seconds: 5), () => "5");
+            //         return null;
+            //       }
+            //     },
+            //     child: (onChange, value) => TextFormField(
+            //         initialValue: value,
+            //         onChanged: onChange,
+            //         decoration: InputDecoration(
+            //             errorText:
+            //                 formController.getFirstFieldError('username'),
+            //             suffix: formController.isAsync('username')
+            //                 ? CircularProgressIndicator()
+            //                 : null))),
+            FormFieldController(
+                controller: formController,
+                name: 'email',
+                validators: [RequiredValidator('Please input this field')],
+                child: (onChange) => TextField(
+                    onChanged: onChange,
+                    decoration: InputDecoration(
+                        errorText:
+                            formController.getFirstFieldError('email')))),
+            FormFieldController(
+                controller: formController,
+                name: 'password',
+                validators: [
+                  RequiredValidator('Please input this field'),
+                  MinLengthValidator('Min length 5', 5)
+                ],
+                child: (onChange) => TextField(
+                    obscureText: true,
+                    onChanged: onChange,
+                    decoration: InputDecoration(
+                        errorText:
+                            formController.getFirstFieldError('password')))),
             ButtonBar(
               alignment: MainAxisAlignment.center,
               children: [
@@ -54,6 +115,10 @@ class SignInScreen extends HookWidget {
                 RaisedButton(
                   child: Text('Sign Up'),
                   onPressed: onSignUp,
+                ),
+                RaisedButton(
+                  child: Text('Reset'),
+                  onPressed: onReset,
                 )
               ],
             )

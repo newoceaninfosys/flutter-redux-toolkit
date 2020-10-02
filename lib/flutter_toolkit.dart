@@ -1,6 +1,7 @@
-library flutter_redux_toolkit;
+library flutter_toolkit;
 
-export 'package:reselect/reselect.dart';
+import 'src/event_emitter.dart';
+
 export 'package:flutter_hooks/flutter_hooks.dart'
     show
         useEffect,
@@ -28,18 +29,19 @@ export 'package:flutter_hooks/flutter_hooks.dart'
         HookState,
         HookElement,
         StatefulHookWidget;
+export 'package:reselect/reselect.dart';
+
 export 'src/async_redux/async_redux.dart';
-export 'src/redux_app_state.dart';
-export 'src/persistor.dart';
-export 'src/thunk_action.dart';
-export 'src/thunk_action_observe.dart';
-export 'src/thunk_action_events.dart';
 export 'src/common.dart';
+export 'src/form/index.dart';
+export 'src/persistor.dart';
+export 'src/redux_app_state.dart';
 export 'src/redux_state.dart';
 export 'src/set_state_action.dart';
+export 'src/thunk_action.dart';
+export 'src/thunk_action_events.dart';
+export 'src/thunk_action_observe.dart';
 export 'src/use_navigator.dart';
-
-import 'src/event_emitter.dart';
 
 /// A Calculator.
 class ReduxToolkit {

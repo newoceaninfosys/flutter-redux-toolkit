@@ -1,10 +1,9 @@
-
 import 'package:example/redux/app_state.dart';
 import 'package:example/screens/Home.dart';
 import 'package:example/screens/SignIn.dart';
 import 'package:example/screens/SignUp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class MyApp extends StatelessWidget {
   final Store<AppState> store;
@@ -23,7 +22,8 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         // initialRoute: '/',
-        home: this.store.state.auth.token != null ? HomeScreen() : SignInScreen(),
+        home:
+            this.store.state.auth.token != null ? HomeScreen() : SignInScreen(),
         routes: {
           '/home': (context) => HomeScreen(),
           '/sign-in': (context) => SignInScreen(),

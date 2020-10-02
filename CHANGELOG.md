@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.8.0] - October 02, 2020
 
-* TODO: Describe initial release.
+* Implement new form validators
+* Added new form field: TextFieldHook, DatePicker, TimePicker, DateTimePicker
+* Added new methods: clear(), reset(), submit(), complete()

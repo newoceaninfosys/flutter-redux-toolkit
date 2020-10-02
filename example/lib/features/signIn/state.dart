@@ -1,7 +1,6 @@
 import 'package:example/redux/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
-
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class SignInState extends ReduxState<SignInState> {
   final THUNK_STATUS submitStatus;
@@ -74,12 +73,10 @@ class SignInSelectors {
 
   static final selectIsLoading = (AppState state) => createSelector1(
       selectSignIn,
-      (SignInState state) =>
-          state.submitStatus == THUNK_STATUS.LOADING)(state);
+      (SignInState state) => state.submitStatus == THUNK_STATUS.LOADING)(state);
   static final selectIsSucceed = (AppState state) => createSelector1(
       selectSignIn,
-      (SignInState state) =>
-          state.submitStatus == THUNK_STATUS.SUCCEED)(state);
+      (SignInState state) => state.submitStatus == THUNK_STATUS.SUCCEED)(state);
   static final selectIsFailed = (AppState state) => createSelector1(
       selectSignIn,
       (SignInState state) => state.submitStatus == THUNK_STATUS.FAILED)(state);

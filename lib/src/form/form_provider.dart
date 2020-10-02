@@ -62,11 +62,25 @@ class FormProvider {
     return errors;
   }
 
+  void clear() {
+    var nullValues = new Map<String, dynamic>();
+    values.entries.forEach((element) {
+      nullValues[element.key] = null;
+    });
+
+    reset(nullValues);
+  }
+
   void reset(Map<String, dynamic> initialValues) {
-    errors = {};
     if (initialValues != null) {
-      values = initialValues;
+      initialValues.entries.forEach((element) {
+        if (values.containsKey(element.key)) {
+          values[element.key] = element.value;
+        }
+      });
     }
+
+    errors = {};
 
     EventEmitter.eventBus.fire(FormReset(id));
   }
@@ -90,8 +104,11 @@ class FormProvider {
           // isTrue: mean the validator is correct
           var newError = new Map<String, String>();
           newError[validator.name] = validator.message;
-          errors[fieldName] = new Map<String, String>.from(
-              {...(errors[fieldName] ?? {}), ...newError});
+          if (errors[fieldName] != null) {
+            errors[fieldName] = {...errors[fieldName], ...newError};
+          } else {
+            errors[fieldName] = newError;
+          }
         } else {
           if (errors[fieldName] != null) {
             errors[fieldName].remove(validator.name);
@@ -122,14 +139,21 @@ class FormProvider {
       // Remove null(s)
       errors[fieldName].removeWhere((key, value) => value == null);
 
-      // Keeps ordering
-      var newErrors = new Map<String, String>.from({});
-      fieldValidators.forEach((validator) {
-        if (errors[fieldName][validator.name] != null) {
-          newErrors[validator.name] = errors[fieldName][validator.name];
-        }
-      });
-      errors[fieldName] = newErrors;
+      // Remove empty
+      errors[fieldName].removeWhere((key, value) => value.isEmpty);
+
+      if (errors[fieldName].isEmpty) {
+        errors.remove(fieldName);
+      } else {
+        // Keeps ordering
+        var newErrors = new Map<String, String>.from({});
+        fieldValidators.forEach((validator) {
+          if (errors[fieldName][validator.name] != null) {
+            newErrors[validator.name] = errors[fieldName][validator.name];
+          }
+        });
+        errors[fieldName] = newErrors;
+      }
     }
 
     return errors;

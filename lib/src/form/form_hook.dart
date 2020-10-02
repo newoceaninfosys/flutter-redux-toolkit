@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_redux_toolkit/src/event_emitter.dart';
 
+import '../event_emitter.dart';
 import 'form_controller.dart';
 import 'form_hook_events.dart';
 import 'form_provider.dart';

@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_redux_toolkit:
+  flutter_toolkit:
     path: ../
 
 

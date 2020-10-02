@@ -1,4 +1,4 @@
-# flutter-redux-toolkit
+# flutter-toolkit
 This package inspired by `redux-toolkit` (A toolset for Redux) and from React-Native with love.
 
 This package is a combination of:
@@ -14,9 +14,9 @@ I tried to bring react-native-functionalities-like as much as i can so that Reac
 ## Getting Started
 - Add following to pubspec:
 ```
-flutter_redux_toolkit:
+flutter_toolkit:
     git:
-      url: git://github.com/newoceaninfosys/flutter-redux-toolkit.git
+      url: git://github.com/newoceaninfosys/flutter-toolkit.git
       ref: master
 ```
 

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:example/features/signIn/state.dart';
 import 'package:example/redux/app_state.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class SignActions {
   SignActions();
@@ -25,7 +25,8 @@ class DoLogin extends ThunkAction<AppState, SignInState> {
 
   @override
   FutureOr<SignInState> onFailed(SignInState state, dynamic error) {
-    return state.copyWith(submitStatus: THUNK_STATUS.FAILED, submitError: error.msg);
+    return state.copyWith(
+        submitStatus: THUNK_STATUS.FAILED, submitError: error.msg);
   }
 
   @override
@@ -35,7 +36,8 @@ class DoLogin extends ThunkAction<AppState, SignInState> {
 
   @override
   FutureOr<SignInState> onLoading(SignInState state) {
-    return state.copyWith(submitStatus: THUNK_STATUS.LOADING, submitError: null);
+    return state.copyWith(
+        submitStatus: THUNK_STATUS.LOADING, submitError: null);
   }
 }
 

@@ -1,10 +1,9 @@
-import 'package:example/features/signIn/actions.dart';
 import 'package:example/features/signIn/state.dart';
 import 'package:example/features/signOut/state.dart';
 import 'package:example/redux/auth/actions.dart';
 import 'package:example/redux/auth/state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class AppState extends ReduxAppState<AppState> {
   final SignInState signIn;

@@ -1,6 +1,6 @@
-name: flutter_redux_toolkit
-description: Flutter Redux Toolkit.
-version: 0.0.2
+name: flutter_toolkit
+description: Flutter Toolkit.
+version: 0.1.0
 author: Shawn Dao <sang.dao@newoceaninfosys.com>
 homepage: https://newoceaninfosys.com
 
@@ -23,6 +23,7 @@ dependencies:
   flutter_hooks: ^0.13.0
   event_bus: ^1.1.1
   async: ^2.4.2
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

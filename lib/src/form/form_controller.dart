@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/src/form/form_provider.dart';
 
 import 'base_async_validator.dart';
 import 'base_validator.dart';
+import 'form_provider.dart';
 
 class FormController with ChangeNotifier {
   FormProvider provider;
@@ -68,6 +68,10 @@ class FormController with ChangeNotifier {
     provider.reset(values);
   }
 
+  void clear() {
+    provider.clear();
+  }
+
   bool isValid([String fieldName]) {
     if (fieldName != null) {
       return errors == null ||
@@ -97,6 +101,7 @@ class FormController with ChangeNotifier {
   }
 
   void submit(Function onSubmit) {
+    if (submitting) return;
     submitting = true;
     triggerValidation();
     onSubmit(values, isValid(), errors);

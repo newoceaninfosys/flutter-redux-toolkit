@@ -1,6 +1,6 @@
 import 'package:example/redux/store.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 import 'app.dart';
 

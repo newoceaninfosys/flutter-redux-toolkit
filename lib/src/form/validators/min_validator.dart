@@ -1,4 +1,4 @@
-import 'package:flutter_redux_toolkit/src/form/base_validator.dart';
+import '../base_validator.dart';
 
 class MinValidator extends BaseValidator {
   int min;

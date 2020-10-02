@@ -1,4 +1,4 @@
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class SignOutState extends ReduxState<SignOutState> {
 //<editor-fold desc="Data Methods" defaultstate="collapsed">

@@ -2,7 +2,7 @@ import 'package:example/features/signOut/actions.dart';
 import 'package:example/redux/app_state.dart';
 import 'package:example/redux/auth/state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class HomeScreen extends HookWidget {
   final String title = "Home";

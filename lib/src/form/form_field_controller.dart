@@ -48,23 +48,28 @@ class FormFieldController extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultValue = useState(controller.getValue(name));
+    dynamic value = controller.getValue(name);
+    final triggerValidation = useState(false);
+    final defaultValue = useState(value);
     final data = useState(defaultValue.value);
-    final textController = TextEditingController();
 
     useValueChanged(data.value, (_, __) {
-      controller.setValue(name, data.value);
-      textController.text = data.value;
+      controller.setValue(name, data.value,
+          triggerValidation: triggerValidation.value);
+      triggerValidation.value = true;
     });
 
     // ignore: missing_return
     useEffect(() {
-      controller.setValue(name, defaultValue.value, triggerValidation: false);
+      controller.setValue(name, defaultValue.value,
+          triggerValidation: triggerValidation.value);
 
       StreamSubscription formResetSub =
           EventEmitter.eventBus.on<FormReset>().listen((event) {
+        var value = controller.getValue(name);
         if (event.id == controller.id) {
-          data.value = controller.getValue(name);
+          data.value = value;
+          triggerValidation.value = false;
         }
       });
 
@@ -73,7 +78,7 @@ class FormFieldController extends HookWidget {
 
     var widget = this.child((value) {
       data.value = value;
-    }, textController);
+    }, data.value);
 
     return Focus(
       child: widget,

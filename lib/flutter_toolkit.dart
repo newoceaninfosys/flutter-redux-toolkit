@@ -1,4 +1,4 @@
-library flutter_redux_toolkit;
+library flutter_toolkit;
 
 import 'src/event_emitter.dart';
 

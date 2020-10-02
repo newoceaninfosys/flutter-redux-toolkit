@@ -1,6 +1,6 @@
 import 'package:example/redux/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_toolkit/flutter_redux_toolkit.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
 class AuthState extends ReduxState<AuthState> {
   final String token;
@@ -67,6 +67,6 @@ class AuthState extends ReduxState<AuthState> {
 class AuthSelectors {
   static final selectAuth = (AppState state) => state.auth;
 
-  static final selectToken = (AppState state) => createSelector1(
-      selectAuth, (AuthState state) => state.token)(state);
+  static final selectToken = (AppState state) =>
+      createSelector1(selectAuth, (AuthState state) => state.token)(state);
 }

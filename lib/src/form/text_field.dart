@@ -4,8 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_toolkit/flutter_toolkit.dart';
 
-class TextFieldHook extends StatelessWidget {
+class TextFieldHook extends HookWidget {
   TextFieldHook(
       {Key key,
       this.initialValue,
@@ -110,8 +111,7 @@ class TextFieldHook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller =
-        new TextEditingController(text: initialValue);
+    final controller = useTextEditingController(text: initialValue);
 
     return TextField(
       key: key,

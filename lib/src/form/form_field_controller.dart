@@ -59,7 +59,6 @@ class FormFieldController extends HookWidget {
       triggerValidation.value = true;
     });
 
-    // ignore: missing_return
     useEffect(() {
       controller.setValue(name, defaultValue.value,
           triggerValidation: triggerValidation.value);
@@ -69,6 +68,8 @@ class FormFieldController extends HookWidget {
         var value = controller.getValue(name);
         if (event.id == controller.id) {
           data.value = value;
+
+          // Stop trigger validation when form reset
           triggerValidation.value = false;
         }
       });

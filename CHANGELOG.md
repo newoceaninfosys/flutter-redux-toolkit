@@ -7,3 +7,5 @@
 ## [0.8.1] - October 05, 2020
 * Fix TextFieldHook cursor issue
 
+## [0.8.2] - October 06, 2020
+* Expose more methods of Navigator in useNavigator

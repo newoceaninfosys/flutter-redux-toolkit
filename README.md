@@ -22,3 +22,7 @@ flutter_toolkit:
 
 ## Example:
 Please check `example` folder for setting up also code demo
+
+
+## Demo:
+![Flutter Toolkit](https://content.screencast.com/users/sang.dao/folders/Default/media/a17ff02b-42ee-42d8-8880-395c7f0b1e98/flutter-toolkit.gif)

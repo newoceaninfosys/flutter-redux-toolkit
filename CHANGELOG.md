@@ -9,3 +9,7 @@
 
 ## [0.8.2] - October 06, 2020
 * Expose more methods of Navigator in useNavigator
+
+## [0.8.4] - October 07, 2020
+* Bug Fix: `watch` can't be null
+* Bug Fix: `defaultValues` can't be null

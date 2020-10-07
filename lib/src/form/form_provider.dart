@@ -27,7 +27,7 @@ class FormProvider {
   }
 
   dynamic getValue(String fieldName) {
-    return values[fieldName];
+    return values != null ? values[fieldName] : null;
   }
 
   Map<String, dynamic> getValues() {
@@ -36,11 +36,17 @@ class FormProvider {
 
   Map<String, dynamic> setValue(String fieldName, dynamic value,
       {bool triggerValidation = true}) {
+    if(values == null) {
+      values = {};
+    }
+
     values[fieldName] = value;
 
     // Watched fields handler
-    String watchField = watchFields
-        .firstWhere((element) => element == fieldName, orElse: () => null);
+    String watchField = watchFields != null
+        ? watchFields.firstWhere((element) => element == fieldName,
+            orElse: () => null)
+        : null;
     if (watchField != null) {
       EventEmitter.eventBus.fire(FormValueChanged(id, values));
     }
